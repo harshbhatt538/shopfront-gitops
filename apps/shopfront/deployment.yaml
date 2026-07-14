@@ -1,0 +1,28 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: shopfront
+  namespace: shopfront
+
+spec:
+  replicas: 1
+
+  selector:
+    matchLabels:
+      app: shopfront
+
+  template:
+    metadata:
+      labels:
+        app: shopfront
+
+    spec:
+      containers:
+      - name: shopfront
+
+        image: 510473517908.dkr.ecr.ap-south-1.amazonaws.com/shopfront-react-app:10b843a3ebc1f25daf882ec4de62bd86d941fabe
+
+        imagePullPolicy: Always
+
+        ports:
+        - containerPort: 80

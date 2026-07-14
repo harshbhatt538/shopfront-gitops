@@ -1,0 +1,25 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+
+metadata:
+  name: shopfront
+
+  namespace: argocd
+
+spec:
+
+  project: default
+
+  source:
+    repoURL: https://github.com/harshbhatt538/shopfront-gitops.git
+    targetRevision: main
+    path: apps/shopfront
+
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: shopfront
+
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
