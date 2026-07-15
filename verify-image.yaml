@@ -1,0 +1,35 @@
+apiVersion: kyverno.io/v1
+kind: ClusterPolicy
+metadata:
+  name: verify-signed-images
+spec:
+  validationFailureAction: Enforce
+  background: false
+
+  webhookTimeoutSeconds: 30
+
+  rules:
+    - name: verify-ecr-images
+
+      match:
+        any:
+        - resources:
+            kinds:
+            - Pod
+
+      verifyImages:
+      - imageReferences:
+        - "510473517908.dkr.ecr.ap-south-1.amazonaws.com/shopfront-react-app*"
+
+        mutateDigest: false
+        required: false
+
+        attestors:
+        - entries:
+          - keyless:
+              issuer: https://token.actions.githubusercontent.com
+
+              subject: "https://github.com/harshbhatt538/devsecops/.github/workflows/ci.yml@refs/heads/main"
+
+              rekor:
+                url: https://rekor.sigstore.dev      
