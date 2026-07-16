@@ -20,7 +20,7 @@ spec:
       containers:
       - name: shopfront
 
-        image: 510473517908.dkr.ecr.ap-south-1.amazonaws.com/shopfront-react-app@sha256:1601c51d2be352ef37786567f40620b7c01b771846ed0c104a6c8fbc0783e072
+        image: 510473517908.dkr.ecr.ap-south-1.amazonaws.com/shopfront-react-app
 
         imagePullPolicy: Always
 
