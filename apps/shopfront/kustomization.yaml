@@ -3,5 +3,7 @@ kind: Kustomization
 resources:
 - deployment.yaml
 images:
+- digest: sha256:cf6b5f2f31cf0d2ee9483842962ec09b960b6212d696c73f02819040a121c877
+  name: 454143665149.dkr.ecr.ap-south-1.amazonaws.com/shopfront-react-app
 - digest: sha256:dacd9e27a796d59dbed48b33ca58084dd785b9cefd3669b692aac7f7ffb1dbbf
   name: 510473517908.dkr.ecr.ap-south-1.amazonaws.com/shopfront-react-app
